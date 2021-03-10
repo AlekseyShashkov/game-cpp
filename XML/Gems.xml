@@ -1,0 +1,14 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<tileset source="Images\Map\Gems\gemset.bmp" gridWidth="34" gridHeight="34">
+  <tile name="diamond" tileX="0" tileY="0" x="90" y="100"/>
+  <tile name="sapphire" tileX="1" tileY="0" x="140" y="180"/>
+  <tile name="sapphire" tileX="2" tileY="0" x="190" y="100"/>
+  <tile name="emerald" tileX="3" tileY="0" x="240" y="180"/>
+  <tile name="sapphire" tileX="4" tileY="0" x="290" y="100"/>
+  <tile name="sapphire" tileX="5" tileY="0" x="340" y="180"/>
+  <tile name="ruby" tileX="6" tileY="0" x="390" y="100"/>
+  <tile name="ruby" tileX="6" tileY="0" x="500" y="410"/>
+  <tile name="ruby" tileX="6" tileY="0" x="700" y="355"/>
+  <tile name="sapphire" tileX="2" tileY="0" x="600" y="148"/>
+  <tile name="sapphire" tileX="2" tileY="0" x="810" y="228"/>
+</tileset>

@@ -1,0 +1,9 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<tileset source="Images\NPC\Devils.bmp" gridWidth="50" gridHeight="50">
+  <tile name="demon" tileX="1" tileY="0" x="70" y="180"/>
+  <tile name="demon" tileX="0" tileY="0" x="200" y="300"/>
+  <tile name="demon" tileX="1" tileY="0" x="800" y="400"/>
+  <tile name="demon" tileX="0" tileY="0" x="980" y="330"/>
+  <tile name="demon" tileX="1" tileY="0" x="400" y="156"/>
+  <tile name="demon" tileX="0" tileY="0" x="600" y="236"/>
+</tileset>

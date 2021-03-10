@@ -1,0 +1,15 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<tileset source="Images\Map\BadRock\badrockvertical.bmp" gridWidth="48" gridHeight="123">
+  <!--Right wall-->
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="35"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="128"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="221"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="314"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="407"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="500"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="593"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="686"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="779"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="872"/>
+  <tile name="rock" tileX="1" tileY="0" x="2185" y="965"/>
+</tileset>

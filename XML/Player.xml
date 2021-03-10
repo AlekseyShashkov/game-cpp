@@ -1,0 +1,4 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<tileset source="Images\Player\Player.bmp" gridWidth="32" gridHeight="32">
+  <tile name="player" tileX="0" tileY="0" x="504" y="240"/>
+</tileset>
