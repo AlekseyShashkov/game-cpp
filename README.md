@@ -128,7 +128,7 @@ void ObjectList::UpdateGame() noexcept
           i->GetNewCoordsX()[0], i->GetNewCoordsY()[0]);
       ```
    - `BARRIER`
-- Если игрок нажал `C` - рисуем коллайдеры элементов
+- Если игрок нажал `C` - разрешаем рисование коллайдеров элементов
     ```c++
     if (lv_PlayerAction == GameObject::ObjectAction::PRESSED_C) {
         if (m_PlaygroundPtr->GetColliderIsVisible()) {
