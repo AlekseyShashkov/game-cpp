@@ -59,11 +59,11 @@ void ObjectList::UpdateGame() noexcept
     ```
 - Вначале проверяем, является ли объект (группа элементов, далее - группа) видимым (под видимостью группы подразумеваем видимость квадрата, координаты вершин которого являются предельными значениями координат элементов). Видимость - попадание в область камеры.
     ```c++
-    void ObjectList::CheckIsVisibleElements(const GameObjectPtr &_GameObjectPtr) noexcept
+    CheckIsVisibleGroup(i);
     ```
 - Проверяем видимость отдельных элементов группы
     ```c++
-    void ObjectList::CheckIsVisibleElements(const GameObjectPtr &_GameObjectPtr) noexcept
+    CheckIsVisibleElements(i);
     ```
 - Далее в зависимости от типа группы:
    - `ENEMY`
