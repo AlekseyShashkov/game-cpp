@@ -11,20 +11,138 @@
 # Game C++
 :video_game:Creation of game engine.
 
-## :city_sunset:Скриншот:
+## :city_sunset: Скриншот:
 ![Скриншот](https://user-images.githubusercontent.com/17510024/110648378-b7faab00-81c9-11eb-92b5-2cbbf8e2d9ed.jpg)
 
-## :scroll:Особенности:
+## :scroll: Особенности:
 - C++11, C++14
 - WinApi
 - XML DOM
 - Создание игрового интерфейса через тайлсеты
 - Взаимодействие объектов в реальном времени
-
-## :computer_mouse:Управление:
+## :computer_mouse: Управление:
 - Движение `WASD`
 - Сбор кристаллов `E`
 - Показать коллайдер `C`
 
-## :computer:Игровой процесс:
+## :computer: Игровой процесс:
 ![Gameplay](https://user-images.githubusercontent.com/17510024/110643895-9bf50a80-81c5-11eb-9c4c-e00696cbae1e.gif)
+
+## :hammer_and_wrench: Игровая логика:
+![Вызов](https://github.com/AlekseyShashkov/game-cpp/blob/main/Main.cpp) методов игровой логики и перерисовки происходит по таймеру
+```c++
+::SetTimer(hWnd, ID_TIMER, 40, nullptr);
+```
+```c++
+case WM_PAINT:
+    hDC = ::BeginPaint(hWnd, &ps);
+    
+    list->UpdateGame();
+    display->DisplayGame(hDC);
+
+    ::EndPaint(hWnd, &ps);
+    return 0;
+
+case WM_TIMER:
+    ::InvalidateRect(hWnd, NULL, FALSE);
+    ::UpdateWindow(hWnd);
+    return 0;
+```
+____
+![Взаимодействие игровых объектов](https://github.com/AlekseyShashkov/game-cpp/blob/main/GameObjects/ObjectList.cpp)
+```c++
+void ObjectList::UpdateGame() noexcept
+```
+- Очищаем игровую область
+    ```c++
+    m_PlaygroundPtr->CleanScreen();
+    ```
+- Вначале проверяем, является ли объект (группа элементов, далее - группа) видимым (под видимостью группы подразумеваем видимость квадрата, координаты вершин которого являются предельными значениями координат элементов). Видимость - попадание в область камеры.
+    ```c++
+    void ObjectList::CheckIsVisibleElements(const GameObjectPtr &_GameObjectPtr) noexcept
+    ```
+- Проверяем видимость отдельных элементов группы
+    ```c++
+    void ObjectList::CheckIsVisibleElements(const GameObjectPtr &_GameObjectPtr) noexcept
+    ```
+- Далее в зависимости от типа группы:
+   - `ENEMY`
+      - :ghost:Проверяем возможность воскрешения элементов
+      - :crossed_swords:Выполняем действие
+      ```c++
+      CheckRespawn(i, lv_TimeIntervalFromStart);
+      i->Action();
+      ```
+   - `RESOURCE`
+      - :ghost:Проверяем возможность воскрешения элементов
+      ```c++
+      CheckRespawn(i, lv_TimeIntervalFromStart);
+      ```
+   - `PLAYER`
+      - :crossed_swords:Выполняем действие
+      - :o:Создаём активные зоны
+      ```c++
+      lv_PlayerAction = i->Action();
+
+      InitializeRegion(i->GetElementGUI(), 160, lv_RangeRegion);
+      InitializeRegion(i->GetElementGUI(), 16, lv_MeleeRegion);
+      ```
+   - `BARRIER`
+- Далее в зависимости от типа группы:
+   - `ENEMY`
+      - :collision:Проверяем столкновения элементов с элементами других групп
+      - :x:Устанавливаем новые координаты
+      - :black_square_button:Устанавливаем область видимости группы
+      - :dart:Проверяем на попадание в активную зону (изменение статуса на активен)
+      ```c++
+      CheckCollision(i);
+
+      i->SetNewCoords();
+      i->TakeSizeLocationArea();
+
+      CheckRegion(i, lv_RangeRegion);
+      ```
+   - `RESOURCE`
+      - :dart:Проверяем на попадание в активную зону (изменение статуса на активен)
+      - :hand:Если игрок нажал `E` и элемент активен - собираем его
+      ```c++
+      CheckRegion(i, lv_MeleeRegion);
+      
+          if (lv_PlayerAction 
+              == GameObject::ObjectAction::PRESSED_E) {
+          CollectElement(i, lv_TimeIntervalFromStart);
+      }
+      ```
+   - `PLAYER`
+      - :collision:Проверяем столкновения элементов с элементами других групп
+      - :x:Устанавливаем новые координаты
+      - :black_square_button:Устанавливаем область видимости группы
+      - :movie_camera:Изменяем видимую камерой область
+      ```c++
+      CheckCollision(i);
+
+      i->SetNewCoords();
+      i->TakeSizeLocationArea();
+
+      m_PlaygroundPtr->Camera(
+          i->GetNewCoordsX()[0], i->GetNewCoordsY()[0]);
+      ```
+   - `BARRIER`
+- Если игрок нажал `C` - рисуем коллайдеры элементов
+    ```c++
+    if (lv_PlayerAction == GameObject::ObjectAction::PRESSED_C) {
+        if (m_PlaygroundPtr->GetColliderIsVisible()) {
+            m_PlaygroundPtr->SetColliderIsVisible(false);
+        } else {
+            m_PlaygroundPtr->SetColliderIsVisible(true);
+        }
+    }
+    ```
+- Рисуем элементы
+    ```c++
+
+    m_PlaygroundPtr->DrawElementGUI(i->GetElementGUI(),
+                                    i->GetCollider(),
+                                    i->GetIsVisibles(),
+                                    i->GetIsAlives());
+    ```
