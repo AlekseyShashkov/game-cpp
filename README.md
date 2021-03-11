@@ -80,7 +80,7 @@ void ObjectList::UpdateGame() noexcept
       ```
    - `PLAYER`
       - :crossed_swords:Выполняем действие
-      - :o:Создаём активные зоны
+      - :o:Создаём активные зоны вокруг игрока
       ```c++
       lv_PlayerAction = i->Action();
 
