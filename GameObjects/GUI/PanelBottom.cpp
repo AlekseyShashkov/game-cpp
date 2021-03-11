@@ -1,6 +1,6 @@
 #include "PanelBottom.h"
 
-PanelBottom::PanelBottom(const wchar_t *_NameBMP)
+PanelBottom::PanelBottom(const wchar_t *_NameBMP) noexcept
     : m_NAMEBMP(_NameBMP)
 {
 

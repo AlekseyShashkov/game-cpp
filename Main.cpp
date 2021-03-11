@@ -69,7 +69,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return 0;
 
     case WM_DESTROY:
-		::RemoveFontResourceEx(FONT_TTF, FR_NOT_ENUM, nullptr);
+        ::RemoveFontResourceEx(FONT_TTF, FR_NOT_ENUM, nullptr);
         ::KillTimer(hWnd, ID_TIMER);
         ::PostQuitMessage(NULL);
         return 0;

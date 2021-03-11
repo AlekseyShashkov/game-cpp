@@ -10,7 +10,7 @@ class Gems : public GameObject
 
     ~Gems() noexcept override final;
 
-    ObjectAction Action() override final;
+    ObjectAction Action() noexcept override final;
 
     ObjectType GetType() const noexcept override final;
     float GetRespawnTime(

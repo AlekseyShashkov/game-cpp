@@ -1,6 +1,6 @@
 #include "DisplayGUI.h"
 
-DisplayGUI::DisplayGUI()
+DisplayGUI::DisplayGUI() noexcept
 {
     InitializeDisplay();
 }

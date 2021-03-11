@@ -6,7 +6,7 @@
 class PanelTop : public GUI
 {
  public:
-    PanelTop(const wchar_t *_NameBMP);
+    PanelTop(const wchar_t *_NameBMP) noexcept;
 
     ~PanelTop() noexcept override final;
 

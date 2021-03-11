@@ -9,7 +9,7 @@ ObjectList::ObjectList(const PlaygroundPtr &_PlaygroundPtr,
 
 }
 
-ObjectList::~ObjectList()
+ObjectList::~ObjectList() noexcept
 {
     m_ListGameObjects.clear();
 }
@@ -185,7 +185,7 @@ bool ObjectList::CheckIsVisibleGroup(
 void ObjectList::CheckIsVisibleElements(
                                 const GameObjectPtr &_GameObjectPtr) noexcept
 {
-    RECT lv_BufferRect = { 0 };
+    RECT lv_BufferRect  = { 0 };
     RECT lv_CompareRect = { 0 };
 
     size_t lv_AmountElements = _GameObjectPtr->GetElementGUI().names.size();
@@ -216,7 +216,7 @@ void ObjectList::CheckIsVisibleElements(
 // 
 // FUNCTION: void CheckCollision(const GameObjectPtr &)
 //
-// RETURN VALUE: нет.
+// RETURN VALUE: no.
 //
 // PURPOSE: checking collision elements.
 //

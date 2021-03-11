@@ -9,9 +9,9 @@
 //             [in]  lpCmdLine       - command line pointer;
 //             [in]  nCmdShow        - shows state of the window.
 //
-// RETURN VALUE: значение выхода    - when receiving a message WM_QUIT;
-//               0                  - if function completes before 
-//                                    entering message loop. 
+// RETURN VALUE: exit value    - when receiving a message WM_QUIT;
+//               0             - if function completes before 
+//                               entering message loop. 
 //
 // PURPOSE: control function.
 //
@@ -102,18 +102,18 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 ATOM RegClassEx(HINSTANCE hInstance, const WCHAR *szWindowClass)
 {
     WNDCLASSEX wcex;
-    wcex.cbSize            = sizeof(wcex); 
-    wcex.style            = CS_HREDRAW | CS_VREDRAW; 
-    wcex.lpfnWndProc    = WndProc; 
-    wcex.cbClsExtra        = 0; 
-    wcex.cbWndExtra        = 0; 
-    wcex.hInstance        = hInstance;
-    wcex.hIcon            = 0; 
-    wcex.hCursor        = ::LoadCursor(NULL, IDC_ARROW);
-    wcex.hbrBackground    = ::CreateHatchBrush(HS_DIAGCROSS, RGB(0, 0, 0));
-    wcex.lpszMenuName    = NULL; 
-    wcex.lpszClassName    = szWindowClass; 
-    wcex.hIconSm        = 0; 
+    wcex.cbSize        = sizeof(wcex); 
+    wcex.style         = CS_HREDRAW | CS_VREDRAW; 
+    wcex.lpfnWndProc   = WndProc; 
+    wcex.cbClsExtra    = 0; 
+    wcex.cbWndExtra    = 0; 
+    wcex.hInstance     = hInstance;
+    wcex.hIcon         = 0; 
+    wcex.hCursor       = ::LoadCursor(NULL, IDC_ARROW);
+    wcex.hbrBackground = ::CreateHatchBrush(HS_DIAGCROSS, RGB(0, 0, 0));
+    wcex.lpszMenuName  = NULL; 
+    wcex.lpszClassName = szWindowClass; 
+    wcex.hIconSm       = 0; 
 
     return (::RegisterClassEx(&wcex) != 0);
 }

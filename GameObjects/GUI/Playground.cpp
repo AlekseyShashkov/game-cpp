@@ -164,8 +164,8 @@ void Playground::Camera(const int _PlayerPositionX,
     bool lv_IsMoreMinimumX = _PlayerPositionX - m_HalfSizeGameWindow.x >= 0;
 
     if (lv_IsLessMaximumX && lv_IsMoreMinimumX) {
-        m_Camera.left    = _PlayerPositionX - m_HalfSizeGameWindow.x;
-        m_Camera.right    = _PlayerPositionX + m_HalfSizeGameWindow.x;
+        m_Camera.left  = _PlayerPositionX - m_HalfSizeGameWindow.x;
+        m_Camera.right = _PlayerPositionX + m_HalfSizeGameWindow.x;
     }    
 
     bool lv_IsLessMaximumY = _PlayerPositionY 

@@ -30,7 +30,7 @@ Gems::~Gems() noexcept
     m_RespawnTimes.clear();
 }
 
-Gems::ObjectAction Gems::Action()
+Gems::ObjectAction Gems::Action() noexcept
 {
     return ObjectAction::NOTHING;
 }

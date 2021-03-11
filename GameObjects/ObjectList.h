@@ -21,7 +21,7 @@ class ObjectList
                const PanelTopPtr &_PanelTopPtr,
                const TimePoint _TimePoint) noexcept;
 
-    ~ObjectList();
+    ~ObjectList() noexcept;
 
     void AddObject(GameObjectPtr _GameObjectPtr) noexcept;
     void UpdateGame() noexcept;    

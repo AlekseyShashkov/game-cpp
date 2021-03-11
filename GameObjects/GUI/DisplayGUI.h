@@ -12,7 +12,7 @@ using ListGUIObjects = std::list<GUIObjectPtr>;
 class DisplayGUI
 {
  public:
-    DisplayGUI();
+    DisplayGUI() noexcept;
 
     ~DisplayGUI() noexcept;
     

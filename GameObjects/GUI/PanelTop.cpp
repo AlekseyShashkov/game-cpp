@@ -1,6 +1,6 @@
 #include "PanelTop.h"
 
-PanelTop::PanelTop(const wchar_t *_NameBMP)
+PanelTop::PanelTop(const wchar_t *_NameBMP) noexcept
     : m_NAMEBMP{ _NameBMP }, 
     m_CountEmerald{ 0 }, m_CountSapphire{ 0 },
     m_CountRuby{ 0 }, m_CountDiamond{ 0 }, 
