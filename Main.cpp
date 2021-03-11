@@ -53,7 +53,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return 0;
 
     case WM_PAINT:
-    {
         hDC = ::BeginPaint(hWnd, &ps);
     
         list->UpdateGame();
@@ -61,7 +60,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         ::EndPaint(hWnd, &ps);
         return 0;
-    }
 
     case WM_TIMER:
         ::InvalidateRect(hWnd, NULL, FALSE);
