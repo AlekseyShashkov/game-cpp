@@ -93,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
 ///////////////////////////////////////////////////////////////////////////////
 // 
-//  FUNCTION: ATOM RegClass(HINSTANCE)
+//  FUNCTION: ATOM RegClass(HINSTANCE, const WCHAR *)
 //
 //  PURPOSE: register window class.
 //
