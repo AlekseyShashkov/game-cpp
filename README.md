@@ -68,9 +68,11 @@ void ObjectList::UpdateGame() noexcept
 - Далее в зависимости от типа группы:
    - `ENEMY`
       - :ghost:Проверяем возможность воскрешения элементов
-      - :crossed_swords:Выполняем действие
       ```c++
       CheckRespawn(i, lv_TimeIntervalFromStart);
+      ```
+      - :crossed_swords:Выполняем действие
+      ```c++
       i->Action();
       ```
    - `RESOURCE`
@@ -80,10 +82,11 @@ void ObjectList::UpdateGame() noexcept
       ```
    - `PLAYER`
       - :crossed_swords:Выполняем действие
-      - :o:Создаём активные зоны вокруг игрока
       ```c++
       lv_PlayerAction = i->Action();
-
+      ```
+      - :o:Создаём активные зоны вокруг игрока
+      ```c++
       InitializeRegion(i->GetElementGUI(), 160, lv_RangeRegion);
       InitializeRegion(i->GetElementGUI(), 16, lv_MeleeRegion);
       ```
@@ -91,39 +94,48 @@ void ObjectList::UpdateGame() noexcept
 - Далее в зависимости от типа группы:
    - `ENEMY`
       - :collision:Проверяем столкновения элементов с элементами других групп
-      - :x:Устанавливаем новые координаты
-      - :black_square_button:Устанавливаем область видимости группы
-      - :dart:Проверяем на попадание в активную зону (изменение статуса на активен)
       ```c++
       CheckCollision(i);
-
+      ```
+      - :x:Устанавливаем новые координаты
+      ```c++
       i->SetNewCoords();
+      ```
+      - :black_square_button:Устанавливаем область видимости группы
+      ```c++
       i->TakeSizeLocationArea();
-
+      ```
+      - :dart:Проверяем на попадание в активную зону (изменение статуса на активен)
+      ```c++
       CheckRegion(i, lv_RangeRegion);
       ```
    - `RESOURCE`
       - :dart:Проверяем на попадание в активную зону (изменение статуса на активен)
-      - :hand:Если игрок нажал `E` и элемент активен - собираем его
       ```c++
       CheckRegion(i, lv_MeleeRegion);
-      
-          if (lv_PlayerAction 
-              == GameObject::ObjectAction::PRESSED_E) {
-          CollectElement(i, lv_TimeIntervalFromStart);
+      ```
+      - :hand:Если игрок нажал `E` и элемент активен - собираем его
+      ```c++
+      if (lv_PlayerAction 
+          == GameObject::ObjectAction::PRESSED_E) {
+      CollectElement(i, lv_TimeIntervalFromStart);
       }
       ```
    - `PLAYER`
       - :collision:Проверяем столкновения элементов с элементами других групп
-      - :x:Устанавливаем новые координаты
-      - :black_square_button:Устанавливаем область видимости группы
-      - :movie_camera:Изменяем видимую камерой область
       ```c++
       CheckCollision(i);
-
+      ```
+      - :x:Устанавливаем новые координаты
+      ```c++
       i->SetNewCoords();
+      ```
+      - :black_square_button:Устанавливаем область видимости группы
+      ```c++
       i->TakeSizeLocationArea();
-
+      ```
+      - :movie_camera:Изменяем видимую камерой область
+      ```c++
       m_PlaygroundPtr->Camera(
           i->GetNewCoordsX()[0], i->GetNewCoordsY()[0]);
       ```
