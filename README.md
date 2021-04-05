@@ -49,7 +49,7 @@ case WM_TIMER:
     return 0;
 ```
 ____
-![Взаимодействие игровых объектов](https://github.com/AlekseyShashkov/game-cpp/blob/main/GameObjects/ObjectList.cpp)
+![Взаимодействие](https://github.com/AlekseyShashkov/game-cpp/blob/main/GameObjects/ObjectList.cpp) игровых объектов
 ```c++
 void ObjectList::UpdateGame() noexcept
 ```
